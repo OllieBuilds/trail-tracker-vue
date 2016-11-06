@@ -76,4 +76,9 @@ module.exports = {
     watch: false,
     keepalive: false,
   },
+  resolve: {
+  alias: {
+    'vue$': 'vue/dist/vue.js'
+  },
+}
 };

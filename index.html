@@ -1,22 +1,42 @@
+
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Trail Tracker</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <script src="dependencies.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="https://unpkg.com/vue/dist/vue.js"></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
+      <div class="jumbotron default-page-header" id="default-page-header">
+        <span class="title" id="tt-title">Trail Tracker</span>
+      </div>
+<!-- Trail Boxes -->
+      <div class="content-wrap" id="main-content">
+        <div id="randomTrail">
+          <ul>
+            <li class="trail-render-list" v-for="trail in trails">
+              <div class="trail-render-box">
+                <div class="thumb-box">
+                    <img v-if="trail.thumbnail" v-bind:src="trail.thumbnail" class="trail-thumbnail"/>
+                    <img v-else v-bind:src="defaultImg" class="trail-thumbnail"/>
+                </div>
+                <br>
+                <h2>{{trail.name}}</h2>
+                <ul>
+                  <li>Latitude: {{trail.lat}}</li>
+                  <li>Longitude: {{trail.lon}}</li>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+                  <li>Rating: {{trail.rating | average}}</li>
+                  <!-- <li>{{trail.activity}}</li> -->
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </body>
 </html>
